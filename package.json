@@ -1,0 +1,21 @@
+{
+  "name": "projet-js1-backend",
+  "version": "1.0.0",
+  "description": "le backend du projet JS 1",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WilfridDelamare-maker/projet-JS1-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/WilfridDelamare-maker/projet-JS1-backend/issues"
+  },
+  "homepage": "https://github.com/WilfridDelamare-maker/projet-JS1-backend#readme"
+}
