@@ -11,9 +11,11 @@ exports.createUser = (req, res) => {
 
   const trimmedUsername = username.trim(); // on supprime les espaces avant apres au cas ou
 
-  const sql = `INSERT INTO users (username) VALUES (?)`;
+  const sql = `INSERT INTO users (username) VALUES (?)`; 
+// on crée une variable pour la requete sql. on insere juste le username dans la table users
 
-  db.run(sql, [trimmedUsername], function (err) {
+  db.run(sql, [trimmedUsername], function (err) { // trimmedUsername remplace le '?'
+    // on utilise un callback parce que la requete sql est asynchrone. la fonction s'execute quand la requete est finie.
     if (err) {
       return res.status(400).json({
         message: 'Impossible de créer l\'utilisateur',

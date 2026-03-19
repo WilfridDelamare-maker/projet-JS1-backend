@@ -17,7 +17,7 @@ exports.createGame = (req, res) => {
   db.run(sql, [user_id, score, duration_seconds], function (err) {
     if (err) {
       return res.status(400).json({
-        message: 'Impossible d’enregistrer la partie',
+        message: 'Impossible d\'enregistrer la partie',
         error: err.message
       });
     }
