@@ -52,7 +52,8 @@ app.get("/api/scores", (req, res) => {
     });
 });
 
+const PORT = 3000;
 // Lancement du serveur
-app.listen(3000, () => {
-    console.log("Backend démarré sur http://localhost:3000");
+app.listen(PORT, () => {
+    console.log(`Backend démarré sur http://localhost:${PORT}`);
 });
