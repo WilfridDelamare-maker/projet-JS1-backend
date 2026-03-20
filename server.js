@@ -3,7 +3,14 @@ const sqlite3 = require("sqlite3").verbose();
 const cors = require("cors");
 
 const app = express();
-const db = new sqlite3.Database("snake.db");
+const db = new sqlite3.Database("snake.db", (err) => {
+  if (err) {
+    console.error('Erreur connexion SQLite :', err.message);
+  } else {
+    console.log('Connecté à SQLite');
+    db.run('PRAGMA foreign_keys = ON');
+  }
+});;
 
 // Middleware
 app.use(cors());
