@@ -1,9 +1,10 @@
 const db = require('../db'); //cherche la connexion à la bdd
 
+// fonction pour créer une partie. on prend les données du front (req.body) et on les insère dans la table games de la bdd
 exports.createGame = (req, res) => {
   const { user_id, score, duration_seconds } = req.body;
 
-  if (!user_id || score == null || duration_seconds == null) {
+  if (!user_id || score == null || duration_seconds == null) { // on verifie que les données ne sont pas absentes
     return res.status(400).json({
       message: 'user_id, score et duration_seconds sont obligatoires'
     });
@@ -32,6 +33,7 @@ exports.createGame = (req, res) => {
   });
 };
 
+// fonction pour recuperer le classement des 10 meilleurs scores. 
 exports.getLeaderboard = (req, res) => {
   const sql = `
     SELECT 
@@ -57,6 +59,7 @@ exports.getLeaderboard = (req, res) => {
   });
 };
 
+// fonction pour récupérer l'historique des parties d'un utilisateur. on prend l'id de l'utilisateur dans les paramètres de l'url (req.params) et on cherche dans la table games de la bdd toutes les parties qui ont cet user_id
 exports.getUserGames = (req, res) => {
   const { userId } = req.params;
 
@@ -79,6 +82,7 @@ exports.getUserGames = (req, res) => {
   });
 };
 
+// fonction pour récupérer une partie par son id. on prend l'id de la partie dans les paramètres de l'url (req.params) et on cherche dans la table games de la bdd la partie qui a cet id
 exports.getGameById = (req, res) => {
   const { gameId } = req.params;
 

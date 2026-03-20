@@ -1,5 +1,6 @@
 const db = require('../db'); // cherche db.js pour la connexion à la bdd
 
+// fonction pour créer un utilisateur. on prend les données du front (req.body) et on les insère dans la table users de la bdd
 exports.createUser = (req, res) => {
   const { username } = req.body;
 
@@ -25,12 +26,13 @@ exports.createUser = (req, res) => {
 
     res.status(201).json({
       message: 'Utilisateur créé',
-      userId: this.lastID,
+      userId: this.lastID, // retourne le dernier id inséré dans la table users
       username: trimmedUsername
     });
   });
 };
 
+// fonction pour récupérer la liste des utilisateurs. 
 exports.getUsers = (req, res) => {
   const sql = `
     SELECT id, username, created_at
@@ -50,6 +52,7 @@ exports.getUsers = (req, res) => {
   });
 };
 
+//fonction pour récupérer un utilisateur par son id. on prend l'id dans les paramètres de l'url (req.params) et on le cherche dans la table users de la bdd
 exports.getUserById = (req, res) => {
   const { userId } = req.params;
 
