@@ -13,8 +13,8 @@ const db = new sqlite3.Database("snake.db", (err) => {
 });;
 
 // Middleware
-app.use(cors());
-app.use(express.json());
+app.use(cors()); // permet au serveur d’accepter les requêtes du front
+app.use(express.json()); // convertit automatiquement les requêtes en JSON
 
 // Création de la table si elle n'existe pas
 db.run(`
@@ -35,7 +35,9 @@ app.post("/api/scores", (req, res) => {
     }
 
     db.run("INSERT INTO scores (player, score) VALUES (?, ?)", [player, score], function (err) {
-        if (err) return res.status(500).json({ error: err.message });
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
         res.status(201).json({ id: this.lastID, player, score });
     });
 });
@@ -43,7 +45,9 @@ app.post("/api/scores", (req, res) => {
 // GET /api/scores — récupérer le classement
 app.get("/api/scores", (req, res) => {
     db.all("SELECT player, score, date FROM scores ORDER BY score DESC LIMIT 10", [], (err, rows) => {
-        if (err) return res.status(500).json({ error: err.message });
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
         res.json(rows);
     });
 });
