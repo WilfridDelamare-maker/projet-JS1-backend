@@ -3,6 +3,8 @@ const sqlite3 = require("sqlite3").verbose();
 const cors = require("cors");
 
 const app = express();
+
+// fonction qui cree une base sqlite ou qui se connecte à une base existante
 const db = new sqlite3.Database("snake.db", (err) => {
   if (err) {
     console.error('Erreur connexion SQLite :', err.message);
