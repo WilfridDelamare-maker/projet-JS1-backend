@@ -7,8 +7,8 @@ const {
   getGameById
 } = require('../controllers/gameController');
 
-router.post('/', createGame);
-router.get('/leaderboard', getLeaderboard);
+router.post('/', createGame); //post envoie données creation partie
+router.get('/leaderboard', getLeaderboard); // get pour recuperer le classement
 router.get('/user/:userId', getUserGames);
 router.get('/:gameId', getGameById);
 
